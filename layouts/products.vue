@@ -5,15 +5,13 @@
     </nav>
   </header>
   <main>
-      <slot/>
+    <slot />
   </main>
   <footer>
     <ul>
-          <li>
-            <NuxtLink to="/">Home</NuxtLink>
-            <NuxtLink to="/about">About</NuxtLink>
-            <NuxtLink to="/products">Products</NuxtLink>
-          </li>
-        </ul>
+      <li><NuxtLink to="/">Home</NuxtLink></li>
+      <li><NuxtLink to="/about">About</NuxtLink></li>
+      <li><NuxtLink to="/products">Products</NuxtLink></li>
+    </ul>
   </footer>
 </template>
