@@ -1,14 +1,17 @@
 <script setup>
 definePageMeta({
-  layout: "products"
+  layout: "products",
 });
+
+const { data: products } = await useFetch("https://fakestoreapi.com/products");
+
 </script>
 
 <template>
-  <div>
-    <h2>Products</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolores ad, saepe tempore quod, aliquam ex unde quae quisquam, praesentium facilis quo delectus. Debitis laboriosam placeat, nihil non expedita cumque?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolores ad, saepe tempore quod, aliquam ex unde quae quisquam, praesentium facilis quo delectus. Debitis laboriosam placeat, nihil non expedita cumque?</p>
+  <div class="grid-cols-4 gap-5">
+    <div v-for="p in products" v-bind:key="p.id" class="m-3">
+      <NuxtLink :to="`/products/${p.id}`">{{p.title}}</NuxtLink>
+    </div>
   </div>
 </template>
 

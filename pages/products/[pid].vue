@@ -1,16 +1,19 @@
 <script setup>
 definePageMeta({
-  layout: "products"
+  layout: "products",
 });
 
 const {pid} = useRoute().params
+
+const { data: product } = await useFetch(`https://fakestoreapi.com/products/${pid}`, {key: pid });
 
 </script>
 
 <template>
   <div>
-    <h2>Products Details: {{ pid }}</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolores ad, saepe tempore quod, aliquam ex unde quae quisquam, praesentium facilis quo delectus. Debitis laboriosam placeat, nihil non expedita cumque?</p>
+     <p>{{product.title}}</p>
+     <p>{{product.price}}</p>
+     <p>{{product.id}}</p>
   </div>
 </template>
 
