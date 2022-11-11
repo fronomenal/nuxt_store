@@ -1,7 +1,4 @@
 <script setup>
-definePageMeta({
-  layout: "products",
-});
 
 const {pid} = useRoute().params
 
@@ -10,11 +7,13 @@ const { data: product } = await useFetch(`https://fakestoreapi.com/products/${pi
 </script>
 
 <template>
-  <div>
-     <p>{{product.title}}</p>
-     <p>{{product.price}}</p>
-     <p>{{product.id}}</p>
-  </div>
+  <NuxtLayout name="products">
+    <div>
+       <p>{{product.title}}</p>
+       <p>{{product.price}}</p>
+       <p>{{product.id}}</p>
+    </div>
+  </NuxtLayout>
 </template>
 
 <style scoped>
