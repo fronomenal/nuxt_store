@@ -8,11 +8,7 @@ const { data: product } = await useFetch(`https://fakestoreapi.com/products/${pi
 
 <template>
   <NuxtLayout name="products">
-    <div>
-       <p>{{product.title}}</p>
-       <p>{{product.price}}</p>
-       <p>{{product.id}}</p>
-    </div>
+    <ProductDetails :product="product" />
   </NuxtLayout>
 </template>
 
