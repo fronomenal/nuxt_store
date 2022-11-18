@@ -8,6 +8,11 @@ if(!product.value){
   throw createError({ statusCode: 404, statusMessage: "Product not found", fatal: true})
 }
 
+useHead({
+  title: `Nuxt Merch | ${product.title}`,
+  meta: {name: "description", description: product.description}
+});
+
 </script>
 
 <template>

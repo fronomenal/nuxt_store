@@ -1,5 +1,10 @@
 <script setup>
 
+useHead({
+  title: "Nuxt Merch | Products",
+  meta: {name: "description", description: "Products page"}
+});
+
 const { data: products } = await useFetch("https://fakestoreapi.com/products");
 
 </script>
