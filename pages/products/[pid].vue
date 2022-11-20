@@ -16,9 +16,11 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout name="products">
-    <ProductDetails :product="product" />
-  </NuxtLayout>
+  <div>
+    <NuxtLayout name="products">
+      <ProductDetails :product="product" />
+    </NuxtLayout>
+  </div>
 </template>
 
 <style scoped>

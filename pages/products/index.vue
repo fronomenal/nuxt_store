@@ -10,13 +10,15 @@ const { data: products } = await useFetch("https://fakestoreapi.com/products");
 </script>
 
 <template>
-  <NuxtLayout name="products">
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-5">
-      <div v-for="p in products" v-bind:key="p.id">
-        <ProductCard :product="p" />
+  <div>
+    <NuxtLayout name="products">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-5">
+        <div v-for="p in products" v-bind:key="p.id">
+          <ProductCard :product="p" />
+        </div>
       </div>
-    </div>
-  </NuxtLayout>
+    </NuxtLayout>
+  </div>
 </template>
 
 <style scoped>
