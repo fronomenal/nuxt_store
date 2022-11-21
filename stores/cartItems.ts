@@ -15,12 +15,12 @@ export const useCartStore = defineStore("cart-local-store", {
       return this.cartItems
     },
     getCount(){
-      return this.cartItems;
+      return this.cartItems.length;
     }
   },
   actions:{
     setItem(item: CartItem){
-      console.log(this.cartItems, this.cartItems.length)
+      this.cartItems.push(item)
     }
   }
 });
