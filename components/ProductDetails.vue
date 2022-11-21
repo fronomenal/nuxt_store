@@ -1,8 +1,24 @@
-<script setup>
+<script lang="ts" setup>
+import { useCartStore, CartItem } from '~~/stores/cartItems';
+
+const items = useCartStore()
 
 const {product} = defineProps({
   product: Object
 });
+
+function addToCart(){
+
+  const item: CartItem = {
+    id: product.id,
+    name: product.title,
+    price: product.price,
+    quantity: 3,
+    checked: true
+  }
+
+  items.setItem(item)
+}
 
 </script>
 
@@ -17,10 +33,10 @@ const {product} = defineProps({
         <p class="text-xl my-7">Price - ${{product.price}}</p>
         <h3 class="font-bold border-b-2 mb-4 pb-2">Description:</h3>
         <p class="mb-7">{{product.description}}</p>
-        <butoon class="btn flex">
+        <button class="btn flex w-full" @click="addToCart">
           <i class="material-icons mr-2">add_shopping_cart</i>
           <span>Add to cart</span>
-        </butoon>
+        </button>
       </div>
     </div>
   </div>
