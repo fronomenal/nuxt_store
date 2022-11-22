@@ -3,7 +3,7 @@ import { useCartStore } from '~~/stores/cartItems';
 
 const items = useCartStore()
 
-const cartItems = computed(()=> items.getItems.value)
+const cartItems = computed(()=> items.getItems)
 
 </script>
 
