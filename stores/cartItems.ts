@@ -1,9 +1,9 @@
 export type CartItem = {
-  id: Number
-  name: String
-  price: Number
-  quantity: Number
-  checked: Boolean 
+  id: number
+  name: string
+  price: number
+  quantity: number
+  checked: boolean 
 }
 
 export const useCartStore = defineStore("cart-local-store", {
@@ -14,6 +14,9 @@ export const useCartStore = defineStore("cart-local-store", {
     },
     getCount(): number{
       return this.cartItems.length;
+    },
+    sumCost(): number{
+      return this.cartItems.reduce( (i: CartItem, j: CartItem) => i.price * i.quantity + j.price * j.quantity , 0)
     }
   },
   actions:{
