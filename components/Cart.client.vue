@@ -3,7 +3,7 @@ import { useCartStore } from '~~/stores/cartItems';
 
 const items = useCartStore()
 
-const cartItems = computed(()=> items.getItems)
+const cartItems = computed(() => items.getItems)
 
 </script>
 
@@ -17,7 +17,7 @@ const cartItems = computed(()=> items.getItems)
       <p>{{ item.price }}</p>
       <br>
       <input type="number" :value="item.quantity">
-      <button><i class="material-icons mr-2"></i>delete</button>
+      <button @click="items.delItem(item.id)"><i class="material-icons mr-2 text-red-600">delete</i></button>
     </div>
   </div>
 </template>

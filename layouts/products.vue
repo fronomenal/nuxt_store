@@ -2,7 +2,10 @@
 import { useCartStore } from '~~/stores/cartItems';
 
 const cartModal = ref(false)
-const items = useCartStore()
+
+let items = null;
+
+if (process.client) items = useCartStore();
 
 
 </script>
@@ -14,7 +17,7 @@ const items = useCartStore()
         <NuxtLink to="/products">Nuxt Merch: Products</NuxtLink>
         <button class="absolute hover:text-red-600 bg-cyan-400 h-10 right-4 top-2 w-20 rounded-md" @click="cartModal = true">
           <i class="material-icons mr-2">add_shopping_cart</i>
-          <span class="font-bold">{{ items.getCount}}</span>
+          <ClientOnly><span class="font-bold">{{items.getCount}}</span></ClientOnly>
         </button>
       </nav>
     </header>
