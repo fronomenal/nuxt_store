@@ -1,5 +1,3 @@
-import {defineStore} from "pinia"
-
 export type CartItem = {
   id: Number
   name: String
@@ -11,24 +9,24 @@ export type CartItem = {
 export const useCartStore = defineStore("cart-local-store", {
   state: ()=> ({cartItems: useLocalStorage<CartItem[]>("local-cart", [])}),
   getters:{
-    _get(id){
-      return this.cartItems.find( (item) => item.id == id );
-    },
-    getItems(){
+    getItems(): CartItem[]{
       return this.cartItems
     },
-    getCount(){
+    getCount(): number{
       return this.cartItems.length;
+    }
+  },
+  actions:{
+    _get(id: number){
+      return this.cartItems.find( (item: CartItem) => item.id == id );
     },
-    getItemCount(id){
+    getItemCount(id: number){
       const count = this._get(id)?.quantity;
 
       if(count) return count.quantity;
 
       return 0;
-    }
-  },
-  actions:{
+    },
     setItem(item: CartItem){
       const itemRef = this._get(item.id);
 
@@ -45,17 +43,14 @@ export const useCartStore = defineStore("cart-local-store", {
       if(itemRef) !itemRef.checked
 
     },
-    addItem(id: number){// increase existing item quantity
+    setQuantity(id: number, quant: number){// increase existing item quantity
       const itemRef = this._get(id);
 
-      if(itemRef) itemRef.quantity++;
+      if(itemRef) itemRef.quantity = quant;
 
     },
-    subItem(id: number){// decrease existing item quantity
-      const itemRef = this._get(id);
-
-      if(itemRef) itemRef.quantity--;
-
-    },
+    delItem(id: number){
+      this.cartItems = this.cartItems.filter( (item: CartItem) => item.id != id);
+    }
   }
 });
