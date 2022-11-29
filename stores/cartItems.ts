@@ -16,7 +16,8 @@ export const useCartStore = defineStore("cart-local-store", {
       return this.cartItems.length;
     },
     sumCost(): number{
-      return this.cartItems.reduce( (i: CartItem, j: CartItem) => i.price * i.quantity + j.price * j.quantity , 0)
+      console.log("here")
+      return this.cartItems.reduce( (acc:number, i: CartItem) => acc + i.price * i.quantity , 0)
     }
   },
   actions:{

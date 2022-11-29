@@ -16,7 +16,7 @@ const cartItems = computed(() => items.getItems)
       <h3>{{ item.name }}</h3>
       <p>{{ item.price }}</p>
       <br>
-      <input type="number" :value="item.quantity">
+      <input  type="number" max="99" :value="item.quantity" @input="event => items.setQuantity(item.id, event.target.value)">
       <button @click="items.delItem(item.id)"><i class="material-icons mr-2 text-red-600">delete</i></button>
     </div>
   </div>

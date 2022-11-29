@@ -7,17 +7,24 @@ const {product} = defineProps({
   product: Object
 });
 
+const itemCount = computed(() => items.getItemCount(product.id))
+
 function addToCart(){
 
   const item: CartItem = {
     id: product.id,
     name: product.title,
     price: product.price,
-    quantity: 3,
+    quantity: 1,
     checked: true
   }
 
   items.setItem(item)
+}
+
+function handleInput (event) {
+
+  items.setQuantity(product.id, event.target.value)
 }
 
 </script>
@@ -33,9 +40,12 @@ function addToCart(){
         <p class="text-xl my-7">Price - ${{product.price}}</p>
         <h3 class="font-bold border-b-2 mb-4 pb-2">Description:</h3>
         <p class="mb-7">{{product.description}}</p>
-        <button class="btn flex w-full" @click="addToCart">
-          <i class="material-icons mr-2">add_shopping_cart</i>
-          <span>Add to cart</span>
+        <button class="btn flex w-full cursor-default">
+          <div @click="addToCart" class="cursor-pointer">
+            <i class="material-icons mr-2 my-auto">add_shopping_cart</i>
+            <div class="my-auto">Add to cart</div>
+          </div>
+          <input class="ml-auto my-auto text-black" v-if="itemCount > 0" type="number" max="99" :value="itemCount" @input="handleInput">
         </button>
       </div>
     </div>
