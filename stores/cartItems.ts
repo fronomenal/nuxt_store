@@ -23,10 +23,10 @@ export const useCartStore = defineStore("cart-local-store", {
     _get(id: number){
       return this.cartItems.find( (item: CartItem) => item.id == id );
     },
-    getItemCount(id: number){
+    getItemCount(id: number) : number{
       const count = this._get(id)?.quantity;
 
-      if(count) return count.quantity;
+      if(count) {return count}
 
       return 0;
     },
