@@ -16,5 +16,8 @@ export default defineNuxtConfig({
         {rel: "stylesheet", href: "https://fonts.googleapis.com/icon?family=Material+Icons"}
       ]
     }
+  },
+  runtimeConfig:{
+    stripeKey: process.env.STRIPE_API_KEY
   }
 })

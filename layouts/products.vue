@@ -3,6 +3,10 @@ import { useCartStore } from '~~/stores/cartItems';
 
 const cartModal = ref(false)
 
+const trigger = ref(false)
+
+const isDisabled = ref(false)
+
 let items = null;
 let cost: any = 0;
 
@@ -11,6 +15,11 @@ if (process.client) {
   cost = computed( ()=> (items.sumCost).toFixed(2) )
 }
 
+function handleConfirmation(){
+  isDisabled.value = true;
+  setTimeout(()=> isDisabled.value = false, 3000);
+  trigger.value = !trigger.value;
+}
 
 
 </script>
@@ -41,10 +50,10 @@ if (process.client) {
         <h1 class="text-3xl m-3">Your Cart - Total Cost </h1>
         <p class="text-xl leading-3 font-bold"><ClientOnly>{{cost}}$</ClientOnly></p>
         <div class="mt-6 mb-3">
-          <button class="btn mx-1">Confirm Order</button>
+          <button class="btn mx-1" @click="handleConfirmation" :disabled="isDisabled">Confirm Order</button>
           <button class="btn bg-red-600 mx-1" @click="cartModal = false">Close</button>
         </div>
-        <Cart/>
+        <Cart :trig="trigger" />
       </div>
     </div>
   </div>
