@@ -50,7 +50,7 @@ export const useCartStore = defineStore("cart-local-store", {
     setQuantity(id: number, quant: number){// increase existing item quantity
       const itemRef = this._get(id);
 
-      if(itemRef) itemRef.quantity = quant;
+      if(itemRef && quant <=99) itemRef.quantity = quant;
 
     },
     delItem(id: number){
