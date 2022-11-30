@@ -41,11 +41,11 @@ function handleInput (event) {
         <h3 class="font-bold border-b-2 mb-4 pb-2">Description:</h3>
         <p class="mb-7">{{product.description}}</p>
         <button class="btn flex w-full cursor-default">
-          <div @click="addToCart" class="cursor-pointer">
+          <div @click="addToCart" class="cursor-pointer hover:text-red-600 hover:font-bold">
             <i class="material-icons mr-2 my-auto">add_shopping_cart</i>
             <div class="my-auto">Add to cart</div>
           </div>
-          <input class="ml-auto my-auto text-black" v-if="itemCount > 0" type="number" max="99" :value="itemCount" @input="handleInput">
+          <input class="ml-auto my-auto text-black" v-if="itemCount > 0" type="number" max="99" maxlength="2" :value="itemCount" @input="handleInput">
         </button>
       </div>
     </div>
