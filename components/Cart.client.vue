@@ -25,8 +25,8 @@ const handleConfirmation = async ()=> {
     method: "post", 
     body: body
   })
-
-  if (data.url) return navigateTo(`/${data.url}`)
+  
+  if (data.value.url) return navigateTo(data.value.url, {external: true})
 
 }
 
