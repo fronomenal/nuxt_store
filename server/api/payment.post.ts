@@ -10,7 +10,7 @@ export default defineEventHandler(async (event: any) => {
   let stripeItems = []
 
   body.forEach(el => {
-    stripeItems.push({price: el.id, quantity: el.id})
+    stripeItems.push({price: el.id, quantity: el.quantity})
   });
 
   const session = await stripe.checkout.sessions.create({
