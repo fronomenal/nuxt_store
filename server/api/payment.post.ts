@@ -2,7 +2,7 @@ import Stripe from "stripe";
 
 export default defineEventHandler(async (event: any) => {
 
-  const {stripeKey} = useRuntimeConfig();
+  const {stripeKey, serverURL} = useRuntimeConfig();
   const stripe = new Stripe(stripeKey, null);
 
   const body = await readBody(event);
@@ -16,8 +16,8 @@ export default defineEventHandler(async (event: any) => {
   const session = await stripe.checkout.sessions.create({
     line_items: stripeItems,
     mode: "payment",
-    success_url: "/success",
-    cancel_url: "/cancel"
+    success_url: `${serverURL}/success`,
+    cancel_url: `${serverURL}/failure`
   })
 
   return {url: session.url}

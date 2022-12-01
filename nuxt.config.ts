@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig:{
-    stripeKey: process.env.STRIPE_API_KEY
+    stripeKey: process.env.STRIPE_API_KEY,
+    serverURL: process.env.BASE_URL
   }
 })
