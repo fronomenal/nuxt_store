@@ -1,9 +1,23 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 Merch Store
+A Nuxt 3 frontend that displays products from https://fakestoreapi.com/
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+Has stripe integration for first 3 items
+
+## Technologies
+
+### Stack
+Project is created with: 
+* Nuxt 3
+* JS
+
+### Packages
+Project uses the following packages: 
+* vueUse
+* pinia
+* tailwindCss
+* stripe
 
 ## Setup
-
 Make sure to install the dependencies:
 
 ```bash
@@ -25,18 +39,7 @@ Start the development server on http://localhost:3000
 npm run dev
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
+## Preview
 ```
 
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+Checkout the Live Preview on [Netlify]() to test it out.
