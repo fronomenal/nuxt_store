@@ -40,6 +40,5 @@ npm run dev
 ```
 
 ## Preview
-```
 
-Checkout the Live Preview on [Netlify]() to test it out.
+Checkout the Live Preview on: [netlify](https://fronom-nuxt-merch.netlify.app/) to test it out.
