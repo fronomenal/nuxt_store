@@ -6,16 +6,18 @@ export type CartItem = {
   checked: boolean 
 }
 
-function debQuantity(itemRef: CartItem , newQuant: number){
+function debQuantity(){
   let timeout: NodeJS.Timeout = null
 
-  return ()=>{
+  return (itemRef: CartItem , newQuant: number) => {
     if (timeout) clearTimeout(timeout)
     timeout = setTimeout(() => {
       setTimeout(()=> itemRef.quantity = newQuant, 1000)
     }, 1000);
   }
 }
+
+const debounceQuantAction = debQuantity();
 
 export const useCartStore = defineStore("cart-local-store", {
   state: ()=> ({cartItems: useLocalStorage<CartItem[]>("local-cart", [])}),
@@ -60,7 +62,7 @@ export const useCartStore = defineStore("cart-local-store", {
     setQuantity(id: number, quant: number){// increase existing item quantity
       const itemRef = this._get(id);
 
-      if(itemRef && quant <=99) (debQuantity(itemRef, quant))();
+      if(itemRef && quant <=99) debounceQuantAction(itemRef, quant);
 
     },
     delItem(id: number){
